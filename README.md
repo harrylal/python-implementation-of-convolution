@@ -1,3 +1,3 @@
 # python-implementation-of-convolution
 
-Applying averaging filer over a method using convolution in python
+Applying averaging filter over a method using convolution in python
