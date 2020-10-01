@@ -14,6 +14,7 @@ def applyFilter(img,myfilter):
     resultCol = 0
     value = 0
     for imRow in range(pivot,(imgH-pivot)): #the last row index should be (imgH-1-pivot)
+        resultCol = 0
         for imCol in range(pivot,(imgW-pivot)):#the last colomn index should be (imgH-1-pivott)
             value = 0
             for filRow in range(0,filterSize):
@@ -26,20 +27,22 @@ def applyFilter(img,myfilter):
                         picLocCol = imCol + (filCol - pivot)
                     else:
                         picLocCol = imCol - (pivot - filCol)
-                    value = value + img[picLocRow][picLocCol]*myfilter[filRow][filCol]
-                    result[resultRow][resultCol] = value 
-        resultCol+=1
-    resultRow+=1
+                    value = value + img[picLocRow][picLocCol]*myfilter[filRow][filCol]       
+            result[resultRow][resultCol] = value
+            # print(resultRow,resultCol,value) 
+            resultCol+=1
+        resultRow+=1
     return result
     
             
      
 img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE)
-# result_img=applyFilter(img_grey,genAvgKernal(3))
-result_img = cv2.filter2D(img_grey,-1,genAvgKernal(3))
-print(img_grey) 
-print(result_img)
-print(np.shape(result_img))
+# print(np.shape(img_grey)) 
+# print(img_grey)
+result_img=applyFilter(img_grey,genAvgKernal(5))
+# result_img = cv2.filter2D(img_grey,-1,genAvgKernal(3))
+# print(result_img)
+# print(np.shape(result_img))
 # print(np.shape(img_grey))
 cv2.imshow('Ouput',result_img)
 cv2.waitKey(0)
