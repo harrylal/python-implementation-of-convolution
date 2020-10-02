@@ -5,7 +5,7 @@ def genAvgKernal(kernSize): #genAvgKernal(kernSize) returns  a averaging filter 
     avgKernal = np.ones((kernSize,kernSize),np.float32)/kernSize**2
     return avgKernal
    
-def applyFilter(img,myfilter):
+def applyFilter(img,myfilter):#convolutes  myfilter and img and resturns the convoluted resultant matrics 
     imgH,imgW = np.shape(img) #save the height and width of the image 
     filterSize = len(myfilter) #get the filter size
     pivot = int(filterSize/2) #pivot or core of filter 
@@ -32,11 +32,22 @@ def applyFilter(img,myfilter):
             resultCol+=1
         resultRow+=1
     return result
-    
-            
+def zeroPad(img,filterSize):
+    imgH,imgW = np.shape(img) #save the height and width of the image  #get the filter size
+    pivot = int(filterSize/2) #pivot or core of filter 
+    result  = np.zeros((imgH+2*pivot,imgW+2*pivot),np.uint8)
+    for x in range(0,imgH):
+        for y in range(0,imgW):
+            result[x+pivot][y+pivot]=img[x][y]
+    return result
+        
+ def mirrorPad(img,filterSize)           
      
 img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE) 
-result_img_1=applyFilter(img_grey,genAvgKernal(3))
-cv2.imshow('Output',img_grey)
+# result_img_1=applyFilter(img_grey,genAvgKernal(3))
+result_img_1 = zeroPad(img_grey,5)
+print(img_grey)
+print (result_img_1)
+cv2.imshow('RAW',img_grey)
 cv2.imshow('filtered',result_img_1)
 cv2.waitKey(0)
