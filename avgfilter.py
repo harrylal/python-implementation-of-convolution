@@ -9,7 +9,7 @@ def applyFilter(img,myfilter):
     imgH,imgW = np.shape(img)
     filterSize = len(myfilter)
     pivot = int(filterSize/2)
-    result = np.zeros((imgH-pivot,imgW-pivot),np.float32)
+    result = np.zeros((imgH-2*pivot,imgW-2*pivot),np.uint8)
     resultRow = 0
     resultCol = 0
     value = 0
@@ -28,21 +28,15 @@ def applyFilter(img,myfilter):
                     else:
                         picLocCol = imCol - (pivot - filCol)
                     value = value + img[picLocRow][picLocCol]*myfilter[filRow][filCol]       
-            result[resultRow][resultCol] = value
-            # print(resultRow,resultCol,value) 
+            result[resultRow][resultCol] = round(value)
             resultCol+=1
         resultRow+=1
     return result
     
             
      
-img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE)
-# print(np.shape(img_grey)) 
-# print(img_grey)
-result_img=applyFilter(img_grey,genAvgKernal(5))
-# result_img = cv2.filter2D(img_grey,-1,genAvgKernal(3))
-# print(result_img)
-# print(np.shape(result_img))
-# print(np.shape(img_grey))
-cv2.imshow('Ouput',result_img)
+img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE) 
+result_img_1=applyFilter(img_grey,genAvgKernal(3))
+cv2.imshow('Output',img_grey)
+cv2.imshow('filtered',result_img_1)
 cv2.waitKey(0)
