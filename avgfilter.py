@@ -6,10 +6,10 @@ def genAvgKernal(kernSize): #genAvgKernal(kernSize) returns  a averaging filter 
     return avgKernal
    
 def applyFilter(img,myfilter):
-    imgH,imgW = np.shape(img)
-    filterSize = len(myfilter)
-    pivot = int(filterSize/2)
-    result = np.zeros((imgH-2*pivot,imgW-2*pivot),np.uint8)
+    imgH,imgW = np.shape(img) #save the height and width of the image 
+    filterSize = len(myfilter) #get the filter size
+    pivot = int(filterSize/2) #pivot or core of filter 
+    result = np.zeros((imgH-2*pivot,imgW-2*pivot),np.uint8) # a result matrix to store the convolution result
     resultRow = 0
     resultCol = 0
     value = 0
