@@ -36,18 +36,28 @@ def zeroPad(img,filterSize):
     imgH,imgW = np.shape(img) #save the height and width of the image  #get the filter size
     pivot = int(filterSize/2) #pivot or core of filter 
     result  = np.zeros((imgH+2*pivot,imgW+2*pivot),np.uint8)
-    for x in range(0,imgH):
-        for y in range(0,imgW):
-            result[x+pivot][y+pivot]=img[x][y]
+    for r in range(0,imgH):
+        for c in range(0,imgW):
+            result[r+pivot][c+pivot]=img[r][c]
     return result
         
- def mirrorPad(img,filterSize)           
+def mirrorPad(img,filterSize):
+    result = zeroPad(img,filterSize)
+    imgH,imgW = np.shape(img)
+    pivot = int(filterSize/2)
+
+   
+
+
      
-img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE) 
+# img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE) 
 # result_img_1=applyFilter(img_grey,genAvgKernal(3))
-result_img_1 = zeroPad(img_grey,5)
-print(img_grey)
-print (result_img_1)
-cv2.imshow('RAW',img_grey)
-cv2.imshow('filtered',result_img_1)
-cv2.waitKey(0)
+# result_img_1 = zeroPad(img_grey,5)
+# print(img_grey)
+# print (result_img_1)
+# cv2.imshow('RAW',img_grey)
+# cv2.imshow('filtered',result_img_1)
+# cv2.waitKey(0)
+random_matrix = np.random.randint(0,9,(3,3))
+print(random_matrix)
+print(mirrorPad(random_matrix,3))
