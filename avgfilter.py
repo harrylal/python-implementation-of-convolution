@@ -32,6 +32,8 @@ def applyFilter(img,myfilter):#convolutes  myfilter and img and resturns the con
             resultCol+=1
         resultRow+=1
     return result
+
+
 def zeroPad(img,filterSize):
     imgH,imgW = np.shape(img) #save the height and width of the image  #get the filter size
     pivot = int(filterSize/2) #pivot or core of filter 
@@ -43,21 +45,34 @@ def zeroPad(img,filterSize):
         
 def mirrorPad(img,filterSize):
     result = zeroPad(img,filterSize)
-    imgH,imgW = np.shape(img)
+    resH,resW = np.shape(result)
     pivot = int(filterSize/2)
+    for row in range(pivot,resH-pivot):
+        temp =  result[row][pivot+1:2*pivot+1]
+        result[row][0:pivot] = temp[::-1]
+        
+        temp =result[row][resW-2*pivot-1:resW-pivot-1]
+        result[row][resW-pivot:resW] = temp[::-1]
+    
+    for col in range(0,resW):
+        temp = result[pivot+1:2*pivot+1,col]
+        result[0:pivot,col] = temp[::-1]  
 
-   
+        temp = result[resH-2*pivot-1:resH-pivot-1,col]
+        result[resH-pivot:resH,col] = temp[::-1]
+
+    return result
 
 
-     
-# img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE) 
-# result_img_1=applyFilter(img_grey,genAvgKernal(3))
-# result_img_1 = zeroPad(img_grey,5)
-# print(img_grey)
-# print (result_img_1)
-# cv2.imshow('RAW',img_grey)
-# cv2.imshow('filtered',result_img_1)
-# cv2.waitKey(0)
-random_matrix = np.random.randint(0,9,(3,3))
-print(random_matrix)
-print(mirrorPad(random_matrix,3))
+def getSize():
+    return int(input("Enter filter size (example - input '3' to gen 3*3 filter): "))
+
+def menu():
+    menu = {1:'Mirroring' , 2:'Padding' , 3:'Crop-off' ,4:'Change Filter Size'}
+    print("\n\n{:^40}\n{:^40}\n".format('MENU','======'))
+    for key,option in menu.items():
+        print('{:>17} {}\n'.format('('+str(key)+')',option))
+    
+  
+img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE) 
+menu()
