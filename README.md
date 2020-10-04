@@ -2,4 +2,4 @@
 
 Applying averaging filter over a image using convolution in python
 
-![resultant image](/processed-image-example/result_compare.png)
+![resultant image](/processed_example/result_compare.png)
