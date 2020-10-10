@@ -79,7 +79,7 @@ def mainMenu():
         mainMenu()
     return choice
   
-img_grey = cv2.imread('data/gear.jpg',cv2.IMREAD_GRAYSCALE) 
+img_grey = cv2.imread('data/blur.tif',cv2.IMREAD_GRAYSCALE) 
 size = getSize()
 while True:
     avgFilter = genAvgKernal(size)
