@@ -2,7 +2,7 @@ import cv2
 import time
 from avgfilter import *
 
-IMAGE_PATH = 'data/gear.jpg'
+IMAGE_PATH = 'data/blur.tif'
 
 
 def getSize():  # Asks the user for an input and returns the input

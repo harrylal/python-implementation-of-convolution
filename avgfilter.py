@@ -1,6 +1,10 @@
+"""
+ This module has methods to help apply filter on an image through convolution 
+"""
+
+
 import cv2
 import numpy as np
-
 
 def genAvgKernal(kernSize):
     """Fuction to generate an averaging filter
