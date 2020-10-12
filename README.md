@@ -12,6 +12,5 @@
 
 ## Notes:
 - Details of avgfilter module can be viewed using python help function `>>help(avgfilter)`
-- Troubleshoot.py can be used to visualise the results of zero padding and mirror pading
 - Data folder contains 2 sample images for the code
 - Processed_example folder contains  example outputs
