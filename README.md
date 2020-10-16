@@ -7,7 +7,7 @@
     - `$ pip3 install opencv-python`
 
 ## Execution of Menu driven code
-- Set the **path to  image** on line5 of main.py, By default the gear.jpg within the data folder is set as input image
+- Set the **path to  image** on **line5** of main.py, By default the gear.jpg within the data folder is set as input image
 - Run the main.py file `$ python3 main.py`
 
 ## Notes:
