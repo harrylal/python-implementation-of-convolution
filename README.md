@@ -2,9 +2,8 @@
 
 ## Required Libraries
 - Numpy
-    - `$ pip3 install numpy`  
-- Opencv 
-    - `$ pip3 install opencv-python`
+-Opencv 
+    - `$ pip3 install numpy,opencv-python`  
 
 ## Execution of Menu driven code
 - Set the **path to  image** on **line5** of main.py, By default the gear.jpg within the data folder is set as input image
