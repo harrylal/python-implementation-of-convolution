@@ -2,7 +2,7 @@
 
 ## Required Libraries
 - Numpy
--Opencv 
+- Opencv 
     - `$ pip3 install numpy,opencv-python`  
 
 ## Execution of Menu driven code
